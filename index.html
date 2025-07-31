@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DS_STORE</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 1em;
+      background-color: #f7f7f7;
+    }
+    header img {
+      width: 120px;
+      border-radius: 50%;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .carousel-buttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .carousel-buttons button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .product-info {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 1em;
+      border-top: 1px solid #eee;
+    }
+    .product-info h2 {
+      font-size: 20px;
+      margin-bottom: 0.5em;
+    }
+    .buy-link {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .section {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 1em;
+      background-color: #f9f9f9;
+      border-left: 5px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="LOGO.jpg" alt="DS_STORE LOGO" />
+    <h1>DS_STORE 官方網站</h1>
+  </header>
+
+  <div class="carousel">
+    <div class="carousel-track" id="track">
+      <img src="7EEAA3C9-F8DA-46DE-BF60-BABDE0F841A6.jpg" />
+      <img src="92634CE8-C269-419A-A024-CA13989121FE.jpg" />
+      <img src="049F9F0B-D822-43E9-8CDE-6E31C74F5A7B.jpg" />
+      <img src="C410C8B6-9B96-4637-B7DD-045B96F3B52D.jpg" />
+      <img src="EC1D3C6C-C702-43EB-B565-FE9AA8584AA4.jpg" />
+      <img src="3E8FCC1A-F60E-48AF-A0A5-D1698B04BAF2.jpg" />
+    </div>
+  </div>
+  <div class="carousel-buttons">
+    <button onclick="prevSlide()">← 上一張</button>
+    <button onclick="nextSlide()">下一張 →</button>
+  </div>
+
+  <div class="product-info">
+    <h2>商品名稱：吸濕排汗衫</h2>
+    <p>台灣製 吸濕排汗衫!!! 夏日舒適穿搭</p>
+    <p>尺寸參考📏（舒適不緊繃）<br>
+      👧 158cm／46kg｜穿 S<br>
+      👧 158cm／55kg｜穿 M<br>
+      👦 174cm／62kg｜穿 L<br>
+      👦 173cm／83kg｜穿 XL<br>
+      👦 175cm／100kg｜穿 3XL
+    </p>
+    <a class="buy-link" href="https://myship.7-11.com.tw/general/detail/GM2507242041224" target="_blank">立即購買</a>
+  </div>
+
+  <div class="section">
+    <h3>🎁 買五送一專區</h3>
+    <a href="https://myship.7-11.com.tw/general/detail/GM2507242044856" target="_blank">前往活動頁</a>
+  </div>
+
+  <div class="section">
+    <h3>🎉 開幕活動專區</h3>
+    <a href="https://myship.7-11.com.tw/general/detail/GM2507242044265" target="_blank">前往活動頁</a>
+  </div>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = document.querySelectorAll('.carousel img');
+    let index = 0;
+
+    function updateCarousel() {
+      const width = slides[0].clientWidth;
+      track.style.transform = `translateX(-${index * width}px)`;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    setInterval(nextSlide, 5000);
+    window.addEventListener('resize', updateCarousel);
+  </script>
+
+</body>
+</html>
